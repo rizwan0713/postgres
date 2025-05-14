@@ -16,12 +16,13 @@ const pgClient = new pg_1.Client({
     host: "ep-nameless-lake-a47m9irz-pooler.us-east-1.aws.neon.tech",
     database: "neondb",
     port: 5432,
+    ssl: true
 });
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         yield pgClient.connect();
-        const response = yield pgClient.query("SELECT * FROM user;");
-        console.log("response is : ", response);
+        const response = yield pgClient.query("UPDATE  users SET  username='okthatsALl' WHERE id=5");
+        console.log(response.rows);
     });
 }
 main();
